@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <h1 th:text="${titulo}"></h1>
+</div>
+<div class="container">
+    <a class="btn btn-primary btn-sm"
+       th:href="@{/views/productos/create}"
+       th:text="'Nuevo Producto'"
+       title="Crear Nuevo Registro">
+    </a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CODIGO</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">MARCA</th>
+            <th scope="col">MODELO</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col">STOCK</th>
+            <th scope="col">FABRICACION</th>
+            <th scope="col">FOTO</th>
+            <th scope="col">EDITAR</th>
+            <th scope="col">ELIMINAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pr:${productos}">
+            <th scope="row" th:text="${pr.id}"></th>
+            <td th:text="${pr.codigo}"></td>
+            <td th:text="${pr.nombre}"></td>
+            <td th:text="${pr.marca}"></td>
+            <td th:text="${pr.modelo}"></td>
+            <td th:text="${pr.precio}"></td>
+            <td th:text="${pr.stock}"></td>
+            <td th:text="${pr.fabricacion}"></td>
+            <td th:text="${pr.foto}"></td>
+            <td>
+                <a class="btn btn-success btn-sm"
+                   th:href="@{/views/productos/edit/} + ${pr.id}"
+                   th:text="'Editar'"
+                   title="Editar Registro">
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{/views/productos/delete/} + ${pr.id}"
+                   th:text="'Eliminar'"
+                   title="Eliminar Registro"
+                    onclick="return confirm('Esta seguro de eliminar el registro?');">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

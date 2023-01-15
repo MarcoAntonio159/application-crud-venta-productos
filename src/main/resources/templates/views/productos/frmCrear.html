@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <br>
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+        <div class="card-body">
+            <form th:action="@{/views/productos/save}" th:object="${producto}" method="post">
+                <div class="row g-2 pt-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="hidden" th:field="*{id}">
+                            <input type="text" th:field="*{codigo}" class="form-control" id="codigo" placeholder="Codigo">
+                            <label for="codigo">Codigo del Producto</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('codigo')}"
+                            th:errors="*{codigo}"></small>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre">
+                            <label for="nombre">Nombre</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+                                   th:errors="*{nombre}"></small>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{marca}" class="form-control" id="marca" placeholder="Marca">
+                            <label for="marca">Marca</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('marca')}"
+                                   th:errors="*{marca}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 pt-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{modelo}" class="form-control" id="modelo" placeholder="Modelo">
+                            <label for="modelo">Modelo</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('modelo')}"
+                                   th:errors="*{modelo}"></small>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{precio}" class="form-control" id="precio" placeholder="precio">
+                            <label for="precio">Precio</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('precio')}"
+                                   th:errors="*{precio}"></small>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{stock}" class="form-control" id="stock" placeholder="stock">
+                            <label for="stock">Stock</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('stock')}"
+                                   th:errors="*{stock}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-2 pt-3">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{fabricacion}" class="form-control" id="fabricacion" placeholder="fabricacion">
+                            <label for="fabricacion">Fabricacion</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('fabricacion')}"
+                                   th:errors="*{fabricacion}"></small>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="text" th:field="*{foto}" class="form-control" id="foto" placeholder="foto">
+                            <label for="foto">Foto</label>
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('foto')}"
+                                   th:errors="*{foto}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-dark mt-3">
+                    <input type="submit" class="btn btn-primary" value="Guardar"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
